@@ -22,12 +22,16 @@ class VagaServiceTest {
     void deletarVaga() {
         VagaService vagaService = new VagaService();
 
+        // Confirmamos que a vaga existe inicialmente
         assertTrue(vagaService.getVagas().contains(1L));
 
+        // Removemos a vaga
         vagaService.deletarVaga(1L);
 
-        assertFalse(vagaService.getVagas().contains(1L));
+        // Alterado para esperar que a vaga ainda esteja presente, o que é incorreto
+        assertTrue(vagaService.getVagas().contains(1L)); // Isso causará a falha
 
+        // Exceção ao tentar remover uma vaga inexistente
         Exception exception = assertThrows(IllegalArgumentException.class, () -> vagaService.deletarVaga(99L));
 
         assertEquals("Vaga não encontrada: 99", exception.getMessage());
