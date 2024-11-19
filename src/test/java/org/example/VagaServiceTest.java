@@ -16,6 +16,8 @@ class VagaServiceTest {
         assertTrue(vagaService.getVagas().contains(3L));
     }
 
+    // github
+
     @Test
     void deletarVaga() {
         VagaService vagaService = new VagaService();
